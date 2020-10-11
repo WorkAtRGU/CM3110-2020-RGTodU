@@ -1,13 +1,16 @@
 package uk.ac.rgu.rgtodu;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.widget.TextView;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import uk.ac.rgu.rgtodu.data.Task;
 import uk.ac.rgu.rgtodu.data.TaskPriority;
@@ -16,15 +19,54 @@ import uk.ac.rgu.rgtodu.data.TaskScheduleFor;
 
 public class ViewTaskActivity extends AppCompatActivity {
 
+    // Key values for storing instance state
+    private static final String KEY_TASK_NAME = "name";
+    private static final String KEY_TASK_HOURS = "hours";
+    private static final String KEY_TASK_DEADLINE = "deadline";
+    // etc
+
+    // The Task thats's being displayed
+    private Task task;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_task);
 
-        Task task = TaskRegistry.getRepository(getApplicationContext()).getTask();
+        // if this isn't the first time the Activity has been created
+        if (savedInstanceState != null){
+            // restore this.task from savedInstanceSate
+            task = new Task();
+            task.setName(savedInstanceState.getString(KEY_TASK_NAME));
+            task.setHoursToCompletion(savedInstanceState.getInt(KEY_TASK_HOURS));
+            task.setDeadline(new Date(savedInstanceState.getLong(KEY_TASK_DEADLINE)));
+            // etc
+        } else {
+            // create a random Task and display it
+            task = TaskRegistry.getRepository(getApplicationContext()).getTask();
+        }
         displayTask(task);
     }
 
+
+
+
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        // save details of the task
+        outState.putString(KEY_TASK_NAME, task.getName());
+        outState.putInt(KEY_TASK_HOURS, task.getHoursToCompletion());
+        outState.putLong(KEY_TASK_DEADLINE, task.getDeadline().getTime());
+        // etc
+
+    }
+
+    /**
+     * Updates the UI to display details of task
+     * @param task
+     */
     private void displayTask(Task task) {
         // display the task name
         TextView tv_viewTaskName = findViewById(R.id.tv_viewTaskName);
