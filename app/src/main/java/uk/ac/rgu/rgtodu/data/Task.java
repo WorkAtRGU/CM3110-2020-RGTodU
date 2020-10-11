@@ -1,13 +1,25 @@
 package uk.ac.rgu.rgtodu.data;
 
+import java.util.Date;
+
+/**
+ * A piece of work that needs to be done
+ * @author David Corsar
+ */
 public class Task {
 
+    // reference name for the task
     private String name;
+    // some more information about it
     private String description;
+    // how important the task is
     private TaskPriority priority;
+    // when it should be scheduled for
     private TaskScheduleFor scheduleFor;
+    // estimate of how many hours it will take to complete
     private int hoursToCompletion;
-    private long deadline;
+    // when the task needs to be completed by
+    private Date deadline;
 
     public String getName() {
         return name;
@@ -29,11 +41,11 @@ public class Task {
         this.scheduleFor = scheduleFor;
     }
 
-    public long getDeadline() {
+    public Date getDeadline() {
         return deadline;
     }
 
-    public void setDeadline(long deadline) {
+    public void setDeadline(Date deadline) {
         this.deadline = deadline;
     }
 

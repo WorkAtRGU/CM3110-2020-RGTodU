@@ -17,12 +17,20 @@
     <string name="rb_low">low</string>
     <string name="rb_medium">medium</string>
     <string name="rb_high">high</string>
+    <string name="tv_viewPriority">Priority</string>
+    <string name="tv_viewScheduleFor">Scheduled for</string>
+    <string name="tv_viewHoursComplete">Hours to completion</string>
+    <string name="tv_viewTaskDeadline">Deadline</string>
 
+    <!-- view task activity -->
+    <string name="tv_viewHoursCompleteValue">%1$d</string>
+
+    <!-- if this every changes, update ViewTaskActivity.java -->
     <string-array name="edit_task_schedule_for">
         <item>Tomorrow</item>
         <item>Next week</item>
         <item>Next month</item>
-        <item>never</item>
+        <item>Never</item>
     </string-array>
 </resources>
 

@@ -13,6 +13,8 @@ import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import java.util.Date;
+
 import uk.ac.rgu.rgtodu.data.Task;
 import uk.ac.rgu.rgtodu.data.TaskPriority;
 import uk.ac.rgu.rgtodu.data.TaskScheduleFor;
@@ -60,7 +62,7 @@ public class CreateTaskActivity extends AppCompatActivity implements View.OnClic
             // get all of the values that have been entered to create a new Task
             String taskName = String.valueOf(((TextView)findViewById(R.id.et_taskName)).getText());
             String taskDesc = String.valueOf(((TextView)findViewById(R.id.et_description)).getText());
-            long taskDeadline = ((CalendarView)findViewById(R.id.cv_deadline)).getDate();
+            Date taskDeadline = new Date(((CalendarView)findViewById(R.id.cv_deadline)).getDate());
             int hoursToCompletion = Integer.parseInt(String.valueOf(((EditText)findViewById(R.id.et_hoursEstimate)).getText()));
 
             // create the new task with those values
