@@ -23,45 +23,50 @@ public class ViewTaskActivity extends AppCompatActivity {
     private static final String KEY_TASK_NAME = "name";
     private static final String KEY_TASK_HOURS = "hours";
     private static final String KEY_TASK_DEADLINE = "deadline";
-    // etc
+    private static final String KEY_TASK_DESCRIPTION = "description";
+    private static final String KEY_TASK_PRIORITY = "priority";
+    private static final String KEY_TASK_SCHEDULED_FOR = "scheduledFor";
 
-    // The Task thats's being displayed
+    // the current Task that is being displayed
     private Task task;
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        // store all the details of the task
+        outState.putString(KEY_TASK_NAME, task.getName());
+        outState.putInt(KEY_TASK_HOURS, task.getHoursToCompletion());
+        outState.putLong(KEY_TASK_DEADLINE, task.getDeadline().getTime());
+        outState.putString(KEY_TASK_DESCRIPTION, task.getDescription());
+        outState.putString(KEY_TASK_PRIORITY, task.getPriority().getLabel());
+        outState.putString(KEY_TASK_SCHEDULED_FOR, task.getScheduleFor().getLabel());
+    }
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_task);
 
-        // if this isn't the first time the Activity has been created
-        if (savedInstanceState != null){
-            // restore this.task from savedInstanceSate
+        // restore the instance state if there is one to restore
+        if (savedInstanceState != null) {
+            // recreate the task
             task = new Task();
             task.setName(savedInstanceState.getString(KEY_TASK_NAME));
+            task.setDescription(savedInstanceState.getString(KEY_TASK_DESCRIPTION));
             task.setHoursToCompletion(savedInstanceState.getInt(KEY_TASK_HOURS));
-            task.setDeadline(new Date(savedInstanceState.getLong(KEY_TASK_DEADLINE)));
-            // etc
+            task.setScheduleFor(TaskScheduleFor.valueOf(savedInstanceState.getString(KEY_TASK_SCHEDULED_FOR)));
+            task.setPriority(TaskPriority.valueOf(savedInstanceState.getString(KEY_TASK_PRIORITY)));
+
+            long deadline = savedInstanceState.getLong(KEY_TASK_DEADLINE);
+            task.setDeadline(new Date(deadline));
         } else {
-            // create a random Task and display it
             task = TaskRegistry.getRepository(getApplicationContext()).getTask();
         }
         displayTask(task);
     }
 
-
-
-
-
-    @Override
-    protected void onSaveInstanceState(@NonNull Bundle outState) {
-        super.onSaveInstanceState(outState);
-        // save details of the task
-        outState.putString(KEY_TASK_NAME, task.getName());
-        outState.putInt(KEY_TASK_HOURS, task.getHoursToCompletion());
-        outState.putLong(KEY_TASK_DEADLINE, task.getDeadline().getTime());
-        // etc
-
-    }
 
     /**
      * Updates the UI to display details of task
@@ -117,5 +122,30 @@ public class ViewTaskActivity extends AppCompatActivity {
         DateFormat format = SimpleDateFormat.getDateInstance();
         String formattedDate = format.format(task.getDeadline());
         tv_dateValue.setText(formattedDate);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
     }
 }
