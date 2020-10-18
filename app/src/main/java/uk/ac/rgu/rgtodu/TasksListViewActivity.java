@@ -6,15 +6,12 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 import java.util.List;
 
 import uk.ac.rgu.rgtodu.data.Task;
-import uk.ac.rgu.rgtodu.data.TaskRegistry;
+import uk.ac.rgu.rgtodu.data.TaskRepository;
 
 public class TasksListViewActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
 
@@ -24,7 +21,7 @@ public class TasksListViewActivity extends AppCompatActivity implements AdapterV
         setContentView(R.layout.activity_tasks_list_view);
 
         // get the tasks to be displayed
-        List<Task> tasks = TaskRegistry.getRepository(getApplicationContext()).getTasks(100);
+        List<Task> tasks = TaskRepository.getRepository(getApplicationContext()).getTasks(1000);
 
 //        List<String> taskStrings = new ArrayList<String>();
 //        for (Task t : tasks){

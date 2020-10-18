@@ -3,9 +3,7 @@ package uk.ac.rgu.rgtodu;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.res.Resources;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.widget.TextView;
 
 import java.text.DateFormat;
@@ -14,7 +12,7 @@ import java.util.Date;
 
 import uk.ac.rgu.rgtodu.data.Task;
 import uk.ac.rgu.rgtodu.data.TaskPriority;
-import uk.ac.rgu.rgtodu.data.TaskRegistry;
+import uk.ac.rgu.rgtodu.data.TaskRepository;
 import uk.ac.rgu.rgtodu.data.TaskScheduleFor;
 
 public class ViewTaskActivity extends AppCompatActivity {
@@ -62,7 +60,7 @@ public class ViewTaskActivity extends AppCompatActivity {
             long deadline = savedInstanceState.getLong(KEY_TASK_DEADLINE);
             task.setDeadline(new Date(deadline));
         } else {
-            task = TaskRegistry.getRepository(getApplicationContext()).getTask();
+            task = TaskRepository.getRepository(getApplicationContext()).getTask();
         }
         displayTask(task);
     }

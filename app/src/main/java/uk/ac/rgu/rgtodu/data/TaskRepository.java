@@ -2,18 +2,17 @@ package uk.ac.rgu.rgtodu.data;
 
 import android.content.Context;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Random;
 
 /**
- * This class provides the single point of truth in the app for {@link TaskRegistry}s, and
+ * This class provides the single point of truth in the app for {@link TaskRepository}s, and
  * will in the future deal with downloading, storing, and retrieving them.
  * @author  David Corsar
  */
-public class TaskRegistry {
+public class TaskRepository {
 
     /**
      * A field for how dates should be formatted before displaying to users
@@ -24,7 +23,7 @@ public class TaskRegistry {
     /**
      * The Singleton instance for this repository
      */
-    private static TaskRegistry INSTANCE;
+    private static TaskRepository INSTANCE;
 
     /**
      * The Context that the app is operating within
@@ -32,15 +31,15 @@ public class TaskRegistry {
     private Context context;
 
     /**
-     * Gets the singleton {@link TaskRegistry} for use when managing {@link Task}s
+     * Gets the singleton {@link TaskRepository} for use when managing {@link Task}s
      * in the app.
-     * @return The {@link TaskRegistry} to be used for managing {@link Task}s in the app.
+     * @return The {@link TaskRepository} to be used for managing {@link Task}s in the app.
      */
-    public static TaskRegistry getRepository(Context context){
+    public static TaskRepository getRepository(Context context){
         if (INSTANCE == null){
-            synchronized (TaskRegistry.class) {
+            synchronized (TaskRepository.class) {
                 if (INSTANCE == null)
-                    INSTANCE = new TaskRegistry();
+                    INSTANCE = new TaskRepository();
                 INSTANCE.context = context;
             }
         }

@@ -33,6 +33,7 @@ public class TaskListItemViewAdapter extends ArrayAdapter<Task>  {
         this.tasks = objects;
     }
 
+    // counter to see how many times the layout is inflated from the XML
     private int count = 0;
 
     @NonNull
