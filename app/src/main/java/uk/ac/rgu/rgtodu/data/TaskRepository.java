@@ -54,7 +54,12 @@ public class TaskRepository {
     public List<Task> getTasks(int number){
         List<Task> tasks = new ArrayList<>(number);
         for (int i = 0; i < number; i++){
-            tasks.add(getTask());
+            Task t = getTask();
+            if (i == 4){
+                t.setName("Task 6376");
+                t.setHoursToCompletion(1);
+            }
+            tasks.add(t);
         }
         return tasks;
     }

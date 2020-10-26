@@ -2,7 +2,8 @@
     <string name="app_name">RGTodU</string>
     <string name="tv_home_msg_add_task">Got something to do?</string>
     <string name="tv_home_msg_add_alternative">Something on your mind?</string>
-    <string name="tv_home_btn_add">Add a new task</string>
+    <string name="btn_home_add_task">Add a task</string>
+    <string name="btn_home_view_tasks">View tasks</string>
 
 
     <!-- create tasks view -->
@@ -25,9 +26,12 @@
     <!-- view task activity -->
     <string name="tv_viewHoursCompleteValue">%1$d</string>
     <string name="btn_taskListItemView">View Task</string>
+    <string name="btn_view_add_calendar">Add deadline to calendar</string>
+    <string name="btn_view_do_task">Give me 20 minutes to do this task</string>
 
     <!-- task list item view adapter -->
     <string name="tv_taskListItemHours">%1$d Hours remaining</string>
+
 
     <!-- if this every changes, update ViewTaskActivity.java -->
     <string-array name="edit_task_schedule_for">

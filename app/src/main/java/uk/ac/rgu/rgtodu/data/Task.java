@@ -8,6 +8,18 @@ import java.util.Date;
  */
 public class Task {
 
+    @Override
+    public String toString() {
+        return "Task{" +
+                "name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", priority=" + priority +
+                ", scheduleFor=" + scheduleFor +
+                ", hoursToCompletion=" + hoursToCompletion +
+                ", deadline=" + deadline +
+                '}';
+    }
+
     // reference name for the task
     private String name;
     // some more information about it
@@ -69,15 +81,5 @@ public class Task {
         this.hoursToCompletion = hoursToCompletion;
     }
 
-    @Override
-    public String toString() {
-        return "Task{" +
-                "name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                ", priority=" + priority +
-                ", scheduleFor=" + scheduleFor +
-                ", hoursToCompletion=" + hoursToCompletion +
-                ", deadline=" + deadline +
-                '}';
-    }
+
 }

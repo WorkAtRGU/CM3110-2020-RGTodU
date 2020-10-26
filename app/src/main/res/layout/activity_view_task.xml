@@ -21,7 +21,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="Complete lecture slides" />
+        tools:text="Task title" />
 
     <TextView
         android:id="@+id/tv_viewTaskDescription"
@@ -102,11 +102,11 @@
         android:id="@+id/tv_viewTaskDeadline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:text="@string/tv_viewTaskDeadline"
         android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_view_add_calendar"
         app:layout_constraintStart_toStartOf="@+id/tv_viewHoursComplete"
-        app:layout_constraintTop_toBottomOf="@+id/tv_viewHoursComplete" />
+        app:layout_constraintTop_toTopOf="@+id/btn_view_add_calendar" />
 
     <TextView
         android:id="@+id/tv_viewTaskDeadlineValue"
@@ -117,4 +117,30 @@
         app:layout_constraintStart_toEndOf="@+id/tv_viewTaskDeadline"
         app:layout_constraintTop_toTopOf="@+id/tv_viewTaskDeadline"
         tools:text="12 Oct 2020" />
+
+    <Button
+        android:id="@+id/btn_view_do_task"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:text="@string/btn_view_do_task"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/tv_viewTaskDeadline"
+        app:layout_constraintTop_toBottomOf="@+id/btn_view_add_calendar" />
+
+    <Button
+        android:id="@+id/btn_view_add_calendar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:minHeight="12dip"
+        android:text="@string/btn_view_add_calendar"
+        app:layout_constraintStart_toEndOf="@+id/tv_viewTaskDeadlineValue"
+        app:layout_constraintTop_toBottomOf="@+id/tv_viewHoursComplete" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -27,42 +27,57 @@ public class TaskListItemViewAdapter extends ArrayAdapter<Task>  {
     // the tasks being displayed
     private List<Task> tasks;
 
+    /**
+     * Creates a new {@link TaskListItemViewAdapter, }
+     * @param context In which the adapter will be operating
+     * @param resource
+     * @param objects The Tasks that will be displayed by the adapter
+     */
     public TaskListItemViewAdapter(@NonNull Context context, int resource,  @NonNull List<Task> objects) {
         super(context, resource, objects);
         this.context = context;
         this.tasks = objects;
     }
 
-    // counter to see how many times the layout is inflated from the XML
-    private int count = 0;
-
     @NonNull
     @Override
     public View getView(final int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+        // here we setup convertView to display the Task a location position with the tasks list.
+
         // get the View that will be used to display the Task
         View itemView = convertView;
         if (itemView == null){
             itemView = LayoutInflater.from(this.context).inflate(R.layout.task_list_view_item, parent, false);
-            Log.d("INFLATE ", String.valueOf(++count));
         }
 
         // get the Task that is being displayed
         Task task = this.tasks.get(position);
 
-        // Now update itemView to display task
+        // Now update itemView to display the task name
         TextView tv_taskName = itemView.findViewById(R.id.tv_taskListItemName);
         tv_taskName.setText(task.getName());
 
+        // now update itemView to display the hours to completion
         TextView tv_taskHours = itemView.findViewById(R.id.tv_taskListItemHours);
         String msg = context.getString(R.string.tv_taskListItemHours, task.getHoursToCompletion());
         tv_taskHours.setText(msg);
 
+        // add an click listener to the button
         Button btn = itemView.findViewById(R.id.btn_taskListItemView);
-        btn.setOnClickListener(new View.OnClickListener() {
+//        btn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Task task = tasks.get(position);
+//                Log.d("TASK_CLICKED", task.getName());
+//            }
+//        });
+
+        itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Task task = tasks.get(position);
                 Log.d("TASK_CLICKED", task.getName());
+//
             }
         });
 

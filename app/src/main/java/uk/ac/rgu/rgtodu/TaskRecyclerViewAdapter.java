@@ -1,6 +1,7 @@
 package uk.ac.rgu.rgtodu;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +17,15 @@ import uk.ac.rgu.rgtodu.data.Task;
 
 public class TaskRecyclerViewAdapter
         extends RecyclerView.Adapter<TaskRecyclerViewAdapter.TaskViewHolder> {
+
+    // Names of Extras used for passing data from this Activity in an Intent
+    public final static String EXTRA_TASK_NAME = "uk.ac.rgu.rgtodu.TASK_NAME";
+    public final static String EXTRA_TASK_DESCRIPTION = "uk.ac.rgu.rgtodu.TASK_DESCRIPTION";
+    public final static String EXTRA_TASK_DEADLINE = "uk.ac.rgu.rgtodu.TASK_DEADLINE";
+    public final static String EXTRA_TASK_HOUR_REMAINING = "uk.ac.rgu.rgtodu.TASK_HOURS";
+    public final static String EXTRA_TASK_HOUR_SCHEDULED = "uk.ac.rgu.rgtodu.TASK_SCHEDULED";
+    public final static String EXTRA_TASK_HOUR_PRIORITY = "uk.ac.rgu.rgtodu.TASK_PRIORITY";
+
 
     // member variables for the context the adapter is working in
     private Context context;
@@ -87,9 +97,29 @@ public class TaskRecyclerViewAdapter
             Task task = tasks.get(position);
 
             if (view.getId() == R.id.btn_taskListItemView) {
-                // do something with task
-                Log.d("TASK_RECYCLER", "user clicked on button " + task.getName());
-            } else {
+                // Create the Intent using this application context
+                // and the Class of the activity to launch
+                Intent intent = new Intent(context,
+                        ViewTaskActivity.class);
+                // Add details of the task to be displayed as extras
+                intent.putExtra(EXTRA_TASK_NAME, task.getName());
+                intent.putExtra(EXTRA_TASK_DESCRIPTION, task.getDescription());
+                // Convert the deadline from a java.util.Data to a long
+                intent.putExtra(EXTRA_TASK_DEADLINE, task.getDeadline().getTime());
+                intent.putExtra(EXTRA_TASK_HOUR_REMAINING, task.getHoursToCompletion());
+                // Convert the enums to strings
+                intent.putExtra(EXTRA_TASK_HOUR_SCHEDULED, task.getScheduleFor().getLabel());
+                intent.putExtra(EXTRA_TASK_HOUR_PRIORITY, task.getPriority().getLabel());
+                // The following line is ONLY needed when not starting another Activity from an
+                // Activity (we're in TaskRecyclerViewAdapter.java here, not TaskRecyclerViewActivity.java
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                // Start the Activity - here we use the context to do this, again, this is not
+                // required if starting an Activity from an Activity.
+                context.startActivity(intent);
+            }
+
+
+            else {
                 Log.d("TASK_RECYCLER", "user clicked on item " + task.getName());
             }
         }
