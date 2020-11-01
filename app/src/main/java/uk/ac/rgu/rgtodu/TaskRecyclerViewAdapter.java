@@ -101,6 +101,8 @@ public class TaskRecyclerViewAdapter
                 // and the Class of the activity to launch
                 Intent intent = new Intent(context,
                         ViewTaskActivity.class);
+                intent.putExtra("TASK", task);
+
                 // Add details of the task to be displayed as extras
                 intent.putExtra(EXTRA_TASK_NAME, task.getName());
                 intent.putExtra(EXTRA_TASK_DESCRIPTION, task.getDescription());

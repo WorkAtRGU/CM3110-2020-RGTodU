@@ -72,7 +72,6 @@ public class CreateTaskActivity extends AppCompatActivity implements View.OnClic
             task.setHoursToCompletion(hoursToCompletion);
             task.setDeadline(taskDeadline);
 
-
             // now set the propority
             int taskPriorityButton = ((RadioGroup)findViewById(R.id.rb_taskPriority)).getCheckedRadioButtonId();
             if (taskPriorityButton == R.id.rb_low)

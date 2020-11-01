@@ -40,17 +40,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     TaskRecyclerViewActivity.class);
             // Start the Activity
             startActivity(intent);
+        } else if (view.getId() == R.id.btn_home_add_task){
+            // Create an Intent with with application context
+            // and the Class of the activity launch
+            Intent intent = new Intent(getApplicationContext(), CreateTaskActivity.class);
+            // Start the Activity
+            startActivity(intent);
         }
     }
-
-
-//        // if its the add task button, lauch the CreateTaskActivity
-//        if (view.getId() == R.id.btn_home_add_task){
-//            Intent intent = new Intent(getApplicationContext(), CreateTaskActivity.class);
-//            startActivity(intent);
-//        } else if (view.getId() == R.id.btn_home_view_tasks){
-//            Intent intent = new Intent(getApplicationContext(), TaskRecyclerViewActivity.class);
-//            startActivity(intent);
-//        }
-//    }
 }
