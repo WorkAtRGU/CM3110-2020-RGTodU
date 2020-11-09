@@ -55,13 +55,13 @@ public class ViewTaskActivity extends AppCompatActivity implements View.OnClickL
             task.setHoursToCompletion(
                     launcher.getIntExtra(TaskRecyclerViewAdapter.EXTRA_TASK_HOUR_REMAINING, -1));
             // restor the enums from the Strings passed in the intent
-//            task.setPriority(
-//                    TaskPriority.valueOf(
-//                            launcher.getStringExtra(TaskRecyclerViewAdapter.EXTRA_TASK_HOUR_PRIORITY)));
-//            task.setScheduleFor(
-//                    TaskScheduleFor.valueOf(
-//                            launcher.getStringExtra(TaskRecyclerViewAdapter.EXTRA_TASK_HOUR_SCHEDULED)));
-            task = launcher.getParcelableExtra("TASK");
+            task.setPriority(
+                    TaskPriority.valueOf(
+                            launcher.getStringExtra(TaskRecyclerViewAdapter.EXTRA_TASK_HOUR_PRIORITY)));
+            task.setScheduleFor(
+                    TaskScheduleFor.valueOf(
+                            launcher.getStringExtra(TaskRecyclerViewAdapter.EXTRA_TASK_HOUR_SCHEDULED)));
+//            task = launcher.getParcelableExtra("TASK");
         }
 
         // restore the instance state if there is one to restore

@@ -1,9 +1,15 @@
 <resources>
+
+    <string name="preferences_file">uk.ac.rgu.rgtodu</string>
+    <string name="pref_personalise_name">personalise_name</string>
+    <string name="pref_personalise_cloud_details">cloud_details</string>
+
     <string name="app_name">RGTodU</string>
     <string name="tv_home_msg_add_task">Got something to do?</string>
     <string name="tv_home_msg_add_alternative">Something on your mind?</string>
     <string name="btn_home_add_task">Add a task</string>
     <string name="btn_home_view_tasks">View tasks</string>
+    <string name="btn_home_personalise">Personalise</string>
 
 
     <!-- create tasks view -->
@@ -40,6 +46,21 @@
         <item>Next month</item>
         <item>Never</item>
     </string-array>
+
+    <!-- personalise activity -->
+    <string name="tv_personalise_name">What should I call you?</string>
+    <string name="tv_personalise_task_order">How would you like tasks ordered?</string>
+    <string name="tv_personalise_cloud_details">Where should I sync tasks to?</string>
+    <string-array name="sp_personalise_task_order">
+        <item>Due soonest</item>
+        <item>Newest</item>
+        <item>Oldest</item>
+        <item>Name (A-Z)</item>
+        <item>Name (Z-A)</item>
+    </string-array>
+    <string name="btn_personalise_save">Store my preferences</string>
+
+
 </resources>
 
 
