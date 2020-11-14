@@ -13,15 +13,22 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
+    private SharedPreferences sharedPreferences;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        sharedPreferences = getSharedPreferences(getString(R.string.shared_prefs_file), MODE_PRIVATE);
 
+        String personalisedName = sharedPreferences.getString(getString(R.string.shared_pref_personalised_name), null);
 
         // get an alternative message for the TextView
-        String altMsg = "I'm sorry Dave, \n but you've got tasks due today";
+        String altMsg = getString(R.string.tv_home_msg_add_alternative);
+        if (personalisedName != null){
+            altMsg = getString(R.string.tv_home_msg_add_task_personalised, personalisedName);
+        }
 
         // get the TextView to change
         TextView tvMsg = findViewById(R.id.tv_home_add_task);

@@ -1,8 +1,7 @@
 <resources>
 
-    <string name="preferences_file">uk.ac.rgu.rgtodu</string>
-    <string name="pref_personalise_name">personalise_name</string>
-    <string name="pref_personalise_cloud_details">cloud_details</string>
+    <string name="shared_prefs_file" translatable="false">uk.ac.rgu.rgtodu</string>
+    <string name="shared_pref_personalised_name" translatable="false">personalised_name</string>
 
     <string name="app_name">RGTodU</string>
     <string name="tv_home_msg_add_task">Got something to do?</string>
@@ -10,6 +9,7 @@
     <string name="btn_home_add_task">Add a task</string>
     <string name="btn_home_view_tasks">View tasks</string>
     <string name="btn_home_personalise">Personalise</string>
+    <string name="tv_home_msg_add_task_personalised">Good news %1$s you\'ve got stuff to do</string>
 
 
     <!-- create tasks view -->
