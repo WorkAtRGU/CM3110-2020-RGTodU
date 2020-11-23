@@ -18,8 +18,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-
         // get an alternative message for the TextView
         String altMsg = "I'm sorry Dave, \n but you've got tasks due today";
 

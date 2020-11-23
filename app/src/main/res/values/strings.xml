@@ -39,6 +39,9 @@
     <string name="tv_taskListItemHours">%1$d Hours remaining</string>
 
 
+    <!-- RecyclerView Activity -->
+    <string name="btn_rv_cloud_sync">Sync with cloud</string>
+
     <!-- if this every changes, update ViewTaskActivity.java -->
     <string-array name="edit_task_schedule_for">
         <item>Tomorrow</item>

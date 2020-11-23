@@ -3,6 +3,10 @@
     package="uk.ac.rgu.rgtodu">
 
     <uses-permission android:name="com.android.alarm.permission.SET_ALARM" />
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+
+
 
     <application
         android:allowBackup="true"
@@ -12,10 +16,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".PersonaliseActivity" android:parentActivityName=".MainActivity"></activity>
-        <activity android:name=".TaskRecyclerViewActivity">
+        <activity android:name=".TaskRecyclerViewActivity" android:parentActivityName=".MainActivity">
 
         </activity>
-        <activity android:name=".TasksListViewActivity"></activity>
+        <activity android:name=".TasksListViewActivity" android:parentActivityName=".MainActivity"></activity>
         <activity
             android:name=".ViewTaskActivity"
             android:parentActivityName=".TaskRecyclerViewActivity" />
