@@ -99,4 +99,16 @@ public class TaskRepository {
     }
 
 
+    public void storeTask(Task task){
+        TaskDatabase db = TaskDatabase.getDatabase(context);
+        TaskDao doa = db.taskDao();
+        doa.insert(task);
+    }
+
+    public List<Task> getAllTasks(){
+        TaskDatabase db = TaskDatabase.getDatabase(context);
+        TaskDao doa = db.taskDao();
+        return doa.getAllTasks();
+    }
+
 }

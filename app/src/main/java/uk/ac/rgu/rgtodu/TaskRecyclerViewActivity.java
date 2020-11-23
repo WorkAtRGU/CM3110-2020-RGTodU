@@ -19,7 +19,7 @@ public class TaskRecyclerViewActivity extends AppCompatActivity {
         setContentView(R.layout.activity_task_recycler_view);
 
         // create 1000 tasks for testing
-        List<Task> tasks = TaskRepository.getRepository(getApplicationContext()).getTasks(1000);
+        List<Task> tasks = TaskRepository.getRepository(getApplicationContext()).getAllTasks();
 
         // get the RecycylerView on the UI
         RecyclerView recyclerView = findViewById(R.id.rv_taskRecyclerView);
