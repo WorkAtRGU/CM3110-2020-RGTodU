@@ -17,6 +17,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import uk.ac.rgu.rgtodu.data.Task;
@@ -35,7 +36,7 @@ public class TaskRecyclerViewActivity extends AppCompatActivity implements View.
         setContentView(R.layout.activity_task_recycler_view);
 
         // create 1000 tasks for testing
-        List<Task> tasks = TaskRepository.getRepository(getApplicationContext()).getTasks(1000);
+        List<Task> tasks = new ArrayList<Task>();//TaskRepository.getRepository(getApplicationContext()).getTasks(1000);
 
         // get the RecycylerView on the UI
         recyclerView = findViewById(R.id.rv_taskRecyclerView);
