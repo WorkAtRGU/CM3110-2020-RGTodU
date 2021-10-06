@@ -30,6 +30,8 @@ public class TaskRepository {
      */
     private Context context;
 
+    private TaskDao taskDao;
+
     /**
      * Gets the singleton {@link TaskRepository} for use when managing {@link Task}s
      * in the app.
@@ -41,9 +43,27 @@ public class TaskRepository {
                 if (INSTANCE == null)
                     INSTANCE = new TaskRepository();
                 INSTANCE.context = context;
+                TaskDatabase db = TaskDatabase.getDatabase(context);
+                INSTANCE.taskDao = db.taskDao();
             }
         }
         return INSTANCE;
+    }
+
+    public void storeTask(Task task){
+        taskDao.insert(task);
+    }
+
+    public void storeTasks(Task... tasks){
+        taskDao.insertTasks(tasks);
+    }
+
+    public void deleteTask(Task task){
+        taskDao.delete(task);
+    }
+
+    public List<Task> getAllTasks(){
+        return taskDao.getAllTasks();
     }
 
     /**

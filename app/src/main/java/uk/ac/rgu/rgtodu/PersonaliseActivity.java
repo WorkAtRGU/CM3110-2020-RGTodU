@@ -28,6 +28,9 @@ public class PersonaliseActivity extends AppCompatActivity implements View.OnCli
 
         listener = this;
 
+        // from onClick
+        // setup the SharedPreferences
+        sharedPreferences = getSharedPreferences(getString(R.string.preferences_file), MODE_PRIVATE);
 
         // get and update the personalised name if it exists
         String personalisedName =
@@ -43,9 +46,7 @@ public class PersonaliseActivity extends AppCompatActivity implements View.OnCli
         Button btnSave = findViewById(R.id.btn_personalise_save);
         btnSave.setOnClickListener(this);
 
-        // from onClick
-        // setup the SharedPreferences
-        sharedPreferences = getSharedPreferences(getString(R.string.preferences_file), MODE_PRIVATE);
+
 
     }
 

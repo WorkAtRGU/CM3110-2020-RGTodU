@@ -4,24 +4,30 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.util.Log;
 
+import androidx.annotation.NonNull;
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
 import java.util.Date;
 
 /**
  * A piece of work that needs to be done
  * @author David Corsar
  */
+@Entity(tableName = "task")
 public class Task implements Parcelable {
 
-    @Override
-    public String toString() {
-        return "Task{" +
-                "name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                ", priority=" + priority +
-                ", scheduleFor=" + scheduleFor +
-                ", hoursToCompletion=" + hoursToCompletion +
-                ", deadline=" + deadline +
-                '}';
+    @NonNull
+    @PrimaryKey(autoGenerate = true)
+    private int uid;
+
+    public int getUid() {
+        return uid;
+    }
+
+    public void setUid(int uid) {
+        this.uid = uid;
     }
 
     // reference name for the task
@@ -33,6 +39,7 @@ public class Task implements Parcelable {
     // when it should be scheduled for
     private TaskScheduleFor scheduleFor;
     // estimate of how many hours it will take to complete
+    @ColumnInfo(name = "Hours_Remaining")
     private int hoursToCompletion;
     // when the task needs to be completed by
     private Date deadline;
@@ -84,7 +91,17 @@ public class Task implements Parcelable {
     public void setHoursToCompletion(int hoursToCompletion) {
         this.hoursToCompletion = hoursToCompletion;
     }
-
+    @Override
+    public String toString() {
+        return "Task{" +
+                "name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", priority=" + priority +
+                ", scheduleFor=" + scheduleFor +
+                ", hoursToCompletion=" + hoursToCompletion +
+                ", deadline=" + deadline +
+                '}';
+    }
 
     @Override
     public int describeContents() {

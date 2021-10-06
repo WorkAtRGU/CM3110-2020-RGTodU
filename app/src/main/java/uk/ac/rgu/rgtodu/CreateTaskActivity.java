@@ -2,6 +2,7 @@ package uk.ac.rgu.rgtodu;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -17,6 +18,7 @@ import java.util.Date;
 
 import uk.ac.rgu.rgtodu.data.Task;
 import uk.ac.rgu.rgtodu.data.TaskPriority;
+import uk.ac.rgu.rgtodu.data.TaskRepository;
 import uk.ac.rgu.rgtodu.data.TaskScheduleFor;
 
 public class CreateTaskActivity extends AppCompatActivity implements View.OnClickListener {
@@ -94,6 +96,9 @@ public class CreateTaskActivity extends AppCompatActivity implements View.OnClic
             }
 
             // now do something with the task!
+
+            TaskRepository.getRepository(getApplicationContext()).storeTasks(task);
+            startActivity(new Intent(getApplicationContext(), MainActivity.class));
 
         } else if (view.getId() == R.id.btnCancel){
         }

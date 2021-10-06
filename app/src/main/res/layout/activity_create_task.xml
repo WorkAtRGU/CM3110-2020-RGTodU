@@ -12,9 +12,9 @@
         android:layout_height="wrap_content"
         android:text="@string/tv_taskName"
         app:layout_constraintBottom_toBottomOf="@+id/et_taskName"
-        app:layout_constraintEnd_toEndOf="@+id/tv_sheduleFor"
         app:layout_constraintTop_toTopOf="@+id/et_taskName"
-        app:layout_constraintVertical_bias="0.275" />
+        app:layout_constraintVertical_bias="0.275"
+        tools:layout_editor_absoluteX="42dp" />
 
     <EditText
         android:id="@+id/et_taskName"
@@ -52,6 +52,7 @@
             android:id="@+id/rb_medium"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:checked="true"
             android:onClick="onRadioButtonClicked"
             android:text="@string/rb_medium" />
 
@@ -74,28 +75,14 @@
         app:layout_constraintTop_toTopOf="@+id/rb_taskPriority" />
 
     <TextView
-        android:id="@+id/tv_sheduleFor"
+        android:id="@+id/tv_scheduleFor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
         android:orientation="horizontal"
-        android:text="@string/tv_deadline"
+        android:text="@string/tv_scheduleFor"
         app:layout_constraintBottom_toBottomOf="@+id/sp_scheduleFor"
-        app:layout_constraintEnd_toEndOf="@+id/tv_priority"
-        app:layout_constraintEnd_toStartOf="@+id/sp_scheduleFor"
+        app:layout_constraintEnd_toEndOf="@+id/tv_taskName"
         app:layout_constraintTop_toTopOf="@+id/sp_scheduleFor" />
-
-    <Spinner
-        android:id="@+id/sp_scheduleFor"
-        android:layout_width="0dp"
-        android:layout_height="18dp"
-        android:layout_marginTop="8dp"
-        android:entries="@array/edit_task_schedule_for"
-        android:spinnerMode="dialog"
-        app:layout_constraintEnd_toEndOf="@+id/rb_taskPriority"
-        app:layout_constraintStart_toStartOf="@+id/rb_taskPriority"
-        app:layout_constraintTop_toBottomOf="@+id/rb_taskPriority" />
 
     <TextView
         android:id="@+id/tv_hoursEstimate"
@@ -112,11 +99,15 @@
         android:id="@+id/et_hoursEstimate"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         android:ems="10"
         android:inputType="number"
-        app:layout_constraintEnd_toEndOf="@+id/sp_scheduleFor"
-        app:layout_constraintStart_toStartOf="@+id/sp_scheduleFor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tv_hoursEstimate"
         app:layout_constraintTop_toBottomOf="@+id/sp_scheduleFor" />
 
     <TextView
@@ -177,5 +168,15 @@
         android:text="@string/tv_description"
         app:layout_constraintEnd_toEndOf="@+id/tv_taskName"
         app:layout_constraintTop_toTopOf="@+id/et_description" />
+
+    <Spinner
+        android:id="@+id/sp_scheduleFor"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:entries="@array/edit_task_schedule_for"
+        app:layout_constraintEnd_toEndOf="@+id/rb_taskPriority"
+        app:layout_constraintStart_toStartOf="@+id/rb_taskPriority"
+        app:layout_constraintTop_toBottomOf="@+id/rb_taskPriority" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
